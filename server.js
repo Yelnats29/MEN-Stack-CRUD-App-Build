@@ -3,7 +3,7 @@ dotenv.config();
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const express = require('express');
-const Cat = require('./model/catSchema.js');
+const Cat = require('./models/catSchema.js');
 
 const app = express();
 app.use(express.urlencoded({extended:false}));
@@ -21,13 +21,13 @@ app.get('/', (req, res) => {
 
 app.get('/cats', async (req, res) => {
     const catList = await Cat.find();
-    res.render('cats/catList.ejs', {
+    res.render('catList.ejs', {
         cats: catList,
     });
 });
 
 app.get('/cats/new', (req, res) => {
-    res.render('cats/new.ejs');
+    res.render('new.ejs');
 });
 
 app.post('/cats', async (req, res) => {
@@ -43,14 +43,14 @@ app.post('/cats', async (req, res) => {
 
 app.get('/cats/:catId', async (req, res) => {
     const selectedCat = await Cat.findById(req.params.catId);
-    res.render('cats/show.ejs', {
+    res.render('show.ejs', {
         clickedCat: selectedCat,
     });
 });
 
 app.get('/cats/:catId/edit', async (req, res) => {
     const selectedCat = await Cat.findById(req.params.catId);
-    res.render('cats/edit.ejs', {
+    res.render('edit.ejs', {
         clickedCat: selectedCat,
     });
 });
