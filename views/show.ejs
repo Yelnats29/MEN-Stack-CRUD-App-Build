@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= clickedCat.name %></title>
+  </head>
+  <%- include('./partials/nav.ejs') %>
+  <body>
+    <h1><%= clickedCat.name %></h1>
+    <div>
+      <label for="age">Age: <%= clickedCat.age %> </label>
+    </div>
+    <div>
+      <label for="gender">Gender: <%= clickedCat.gender %> </label>
+    </div>
+    <div>
+      <label for="breed">Breed: <%= clickedCat.breed %> </label>
+    </div>
+    <div>
+      <label for="color">Color: <%= clickedCat.color %> </label>
+    </div>
+    <div>
+      <label for="weight">Weight: <%= clickedCat.weight %> </label>
+    </div>
+    <% if (clickedCat.fixed) { %>
+    <p>Cat is spayed/neutered</p>
+    <% } else { %>
+    <p>Cat is NOT spayed/neutered</p>
+    <% } %>
+    <div>
+      <label for="description">Comments: <%= clickedCat.description %> </label>
+    </div>
+    <br>
+    <a href="/cats/<%= clickedCat._id %>/edit">Edit <%= clickedCat.name %></a>
+    <form action="/cats/<%= clickedCat._id %>?_method=DELETE" method="POST">
+      <button>Delete <%= clickedCat.name %></button>
+    </form>
+  </body>
+</html>

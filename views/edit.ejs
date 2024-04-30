@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= clickedCat.name %></title>
+  </head>
+  <%- include('./partials/nav.ejs') %>
+  <body>
+    <form action="/cats/<%= clickedCat._id %>?_method=PUT" method="POST">
+        <div>
+          <label for="name">Name:</label>
+          <div><small>required</small></div>
+          <input type="text" name="name" id="name" value="<%= clickedCat.name %>" />
+        </div>
+        <div>
+          <label for="age">Age:</label>
+          <div><small>required</small></div>
+          <input type="number" name="age" id="age" value="<%= clickedCat.age %>" />
+        </div>
+        <div>
+          <label for="breed">Breed:</label>
+          <div><small>required</small></div>
+          <input type="text" name="breed" id="breed" value="<%= clickedCat.breed %>" />
+        </div>
+        <div>
+          <label for="color">Color:</label>
+          <div><small>required</small></div>
+          <input type="text" name="color" id="color" value="<%= clickedCat.color %>" />
+        </div>
+        <div>
+          <label for="weight">Weight:</label>
+          <div><small>Weight in pounds (lbs)</small></div>
+          <input type="text" name="weight" id="weight" value="<%= clickedCat.weight %>"/>
+        </div>
+        <div>
+          <label for="gender">Gender:</label>
+          <div><small>required</small></div>
+          <input type="text" name="gender" id="gender" value="<%= clickedCat.gender %>" />
+        </div>
+        <div>
+          <label for="fixed">Is Cat Fixed?</label>
+          <div><small>Select if "Yes"</small></div>
+          <input type="checkbox" name="fixed" id="fixed" <% if (clickedCat.fixed) { %>
+           checked
+          <% } %>/>
+        </div>
+        <div>
+          <label for="description">Comments:</label>
+          <div><small>Enter anything more you'd like to share here</small></div>
+          <textarea
+            id="description"
+            name="description"
+            maxLength="300"
+          ></textarea>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+  </body>
+</html>
