@@ -1,14 +1,14 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require('mongoose');
+const path = require('path')
 const methodOverride = require('method-override');
 const express = require('express');
 const Cat = require('./models/catSchema.js');
-
 const app = express();
 app.use(express.urlencoded({extended:false}));
 app.use(methodOverride("_method"));
-
+app.use(express.static(path.join(__dirname, "public")));
 mongoose.connect(process.env.MONGODB_URI);
 
 app.listen(3000, (req, res) => {

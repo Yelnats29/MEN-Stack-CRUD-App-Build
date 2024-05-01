@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>List of cats</title>
 </head>
 <%- include('./partials/nav.ejs') %>
@@ -10,7 +11,7 @@
     <h1>This is a list of cats</h1>
     <ul>
         <% cats.forEach(cat => { %>
-         <li><a href="/cats/<%= cat._id %>"><%= cat.name %></a></li>
+         <li><h3><a href="/cats/<%= cat._id %>"><%= cat.name %></a></h3></li>
         <% }) %>
     </ul>
 </body>
